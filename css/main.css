@@ -1,0 +1,275 @@
+html,body,h1,h4,i,a,p,li,ul,img,div,span{
+  margin: 0;
+  padding: 0;
+  font-size:62.5%;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+body{
+  background:#fffbf0;
+}
+.top{
+  width: 100%;
+  height: 27.5rem;
+  /* background: url(../img/top.png) no-repeat;
+  background-size: 100%; */
+}
+nav{
+  width: 100%;
+  height: 5rem;
+  background: #bfab86;
+}
+nav>ul{
+  width: 96rem;
+  margin: 0 auto;
+  display: flex;
+  box-sizing: border-box;
+}
+nav>ul>li>a{
+  display: inline-block;
+  height: 15rem;
+  font-size: 1.8rem;
+  line-height: 5rem;  
+  color: #fff;
+  padding:0 3.5rem;
+}
+nav>ul>li>a:hover,
+nav>ul>li>.router-link-active{ 
+  color: #000;
+  background: #fffbf0;
+  border-top: 0.2rem solid #f77825;
+}
+footer{
+  width: 100%;
+  height: 10rem;
+  background: #bfab86;
+  margin-top: 10rem;
+}
+footer>p{
+  color: #fff;
+  font-size: 1.4rem;
+  text-align: center;
+  line-height: 5rem;
+}
+main{
+  margin: 1.2rem auto;
+  width: 96rem;
+  /* height: 1000rem; */
+  display: flex;
+}
+main>.left{
+  flex: 1;
+  /* background: #000; */
+  margin-right: 0.5rem;
+}
+main>.left>.l-t,
+main>.left>.l-m,
+main>.left>.l-b{
+  width: 100%;
+  height: 20rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid #bfab86;
+}
+main>.right{
+  margin-left: 1rem;
+  flex:2.5;
+}
+@font-face { 
+  font-family: "icomoon"; 
+  src:  url('../fonts/icomoon.eot?7kkyc2');
+  src:  url('../fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?7kkyc2') format('truetype'),
+    url('../fonts/icomoon.woff?7kkyc2') format('woff'),
+    url('../fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+  font-style: normal; }
+  main>.left>.l-t>p{
+    font-size: 2rem;
+    text-align: center;
+    color:#999;
+  }
+  main>.left>.l-t>p>i{
+    font-style: normal;
+    font-family: icomoon;
+    color:#999;
+    font-size: 1.2rem
+  }
+  main>.left>.l-t:before{
+    content:'' ;
+    display: block;
+    margin: 2rem 0 2rem 9rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background:url(../img/touxiang.jpg) no-repeat;
+    background-size: 100%
+  }
+  main>.left>.l-t{
+    position: relative;
+  }
+  @keyframes xuan{
+    0%{    
+        transform: rotate(0deg);
+    }
+    50%{
+      transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+  main>.left>.l-t:after{
+    content:'' ;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background: url(../img/xuan.png) no-repeat;
+    background-size:100%;
+    position: absolute;
+    top:2rem;
+    left: 9rem;
+    animation: xuan 2s linear infinite
+  }
+  main>.left>.l-m>h4,
+  main>.left>.l-b>h4
+  {
+    font-weight:300;
+    display: block;
+    width: 100%;
+    font-size: 1.8rem;
+    height: 4rem;
+    line-height: 4rem;
+    background: #bfab86;
+    opacity: 0.5;
+    border-bottom: 0.1rem solid #bfab86;
+  }
+  main>.left>.l-m>p>a>i{
+    font-style: normal;
+    font-family: icomoon;
+    color:#999;
+    font-size: 9rem
+  }
+  main>.left>.l-m>p{
+    display: inline-block;
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem 2rem 0 2rem;
+  }
+  main>.left>.l-m>p>a{
+    font-size: 2rem;
+    color:#999  
+  }
+  main>.left>.l-m>p>a:hover{
+    text-decoration: none;
+    color:#0099ff
+  }
+  main>.left>.l-m>p>a:hover>i{
+    color:#0099ff
+  }
+  main>.left>.l-b>p{
+    display: block;
+    width: 90%;
+    font-size: 1.4rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    margin: 1rem 0 0 1rem;
+    opacity: 0.5;
+    border-bottom: 0.1rem dashed #bfab86;
+  }
+  .right>h4{
+    display: block;
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    margin-top:1.6rem;
+    border-bottom: 0.2rem solid #f77825;
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: #000;
+  }
+  .right>h5{
+    display: block;
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    border-bottom: 0.2rem solid #f77825;
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+ .right>.r-b{
+  width: 100%;
+  height: 20rem;
+  border-bottom: 0.1rem solid #bfab86;
+  display: flex;
+  align-items:center;
+  }
+  .right>.r-b1{
+    width: 100%;
+    border-bottom: 0.1rem solid #bfab86;
+    align-items:center;
+  }
+ .right>.r-b:hover, .right>.r-b1:hover{
+    background: #fff;
+  }
+ .right>.r-b>img{
+    flex:1;
+    height: 15rem;
+    vertical-align:top;
+    overflow: hidden;
+  }
+  .right>.r-b>img:hover{
+    height: 20rem;
+  }
+ .right>.r-b>.con{
+    margin-left: 1rem;
+    flex:2;
+    height: 15rem;
+    position: relative;
+  }
+  .right>.r-b>.con>h4, .right>.r-b1>.con>h4{
+    font-size: 1.8rem;
+  }
+  .right>.r-b>.con>p,  .right>.r-b1>.con>p{
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+    color:#666;
+  }
+  .right>.r-b>.con>.con-b{
+    width: 100%;
+    height: 3rem;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+  }
+  .right>.r-b1>.con>.con-b{
+    width: 100%;
+    height: 3rem;
+    margin-top: 1rem;
+    display: flex;
+  }
+.right>.r-b>.con>.con-b>i,.right>.r-b1>.con>.con-b>i{  
+    font-style: normal;
+    font-family: icomoon;
+    color:#0099ff;
+    line-height: 3rem;
+    flex:1
+  }
+  .right>.r-b>.con>.con-b>button,  .right>.r-b1>.con>.con-b>button{
+    border: none;  
+    flex:1;
+    background: none; 
+   font-family: icomoon; 
+   font-size: 1.5rem;
+    color:#666;
+  }
+  .right>.r-b>.con>.con-b>button:hover,  .right>.r-b1>.con>.con-b>button:hover{
+    color:#0099ff;
+  }

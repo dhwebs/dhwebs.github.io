@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="博客，个人博客，blog，大海，大海的个人博客">
+  <meta name="description" content="大海的个人博客，一个前端小白的进阶之路">
+  <!-- <meta name="robots" content="all"> -->
+  <title>大海博客-前端萌新的处女作</title>
+  <link rel="stylesheet" href="assets/bootstrap.css">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="assets/jquery.js"></script>
+  <script src="assets/bootstrap.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- 页头背景图片 -->
+    <div class="top d-none d-lg-block"></div>
+
+    <!-- 导航栏开始 -->
+
+    <nav>
+      <ul>
+        <li v-for="item in navList" :key=item.luyou>
+          <router-link :to="item.luyou" exact>{{item.tit}}</router-link>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 主体部分开始 -->
+    <router-view></router-view>
+
+    <!-- 页脚开始 -->
+    <footer>
+      <p>本博客虽为静态页面，不过博主闲的很，会通过修改源码的方式更新博客</p>
+      <p>制作者：大海</p>
+    </footer>
+
+  </div>
+
+  <!-- 首页组件开始 -->
+  <template id="main">
+    <main>
+      <div class="left d-none d-lg-block">
+        <div class="l-t">
+          <p><i></i> 男<br><i></i> 江西抚州</p>
+        </div>
+        <div class="l-b">
+          <h4>个人档</h4>
+          <p>21岁 白羊座</p>
+          <p>简介：能宅能浪的前端小萌新</p>
+          <p>爱旅行；爱学习；爱LOL</p>
+        </div>
+        <div class="l-m">
+          <h4>关注我</h4>
+          <p><a href="https://weibo.com/u/6035539489" target="_Blank"><i></i><br><br>新浪</a></p>
+          <p><a href="https://github.com/mosquitoLeg" target="_Blank"><i></i><br><br>github</a></p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="r-t">
+          <div class="block">
+            <el-carousel height="350px">
+              <el-carousel-item v-for="(itemimg,i) in imgList" :key="i">
+                <img :src="itemimg.img" alt="" style="width:100%">
+              </el-carousel-item>
+            </el-carousel>
+          </div>
+        </div>
+        <h4>最新内容</h4>
+        <div class="r-b" v-for="(rb,i) in rbList" :key="i">
+          <img :src="rb.img" alt="">
+          <div class="con">
+            <h4>{{rb.title}}</h4>
+            <p>{{rb.con}}</p>
+            <div class="con-b">
+              <i> {{rb.time}}</i><i> {{rb.map}}</i><button @click='change'></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </template>
+
+  <!-- 其他导航菜单的通用组件开始 -->
+  <template id="tongyong">
+    <main>
+      <div class="left">
+        <div class="l-t">
+          <p>QQ：820253313</p>
+        </div>
+        <div class="l-b">
+          <h4>Blog使用帮助 </h4>
+          <p>温馨提示<br>此页面为静态页面<br>点赞等交互功能没有实际作用</p>
+
+        </div>
+        <div class="l-m">
+          <h4>关注我</h4>
+          <p><a href="https://weibo.com/u/6035539489" target="_Blank"><i></i><br><br>新浪</a></p>
+          <p><a href="https://github.com/mosquitoLeg" target="_Blank"><i></i><br><br>github</a></p>
+        </div>
+
+      </div>
+      <router-view></router-view>
+    </main>
+  </template>
+
+  <!-- 畅所欲言组件开始 -->
+  <template id="changyan">
+    <div class="right">
+      <h5>畅所欲言</h5>
+      <div class="r-b1" v-for="(rb,i) in rbList" :key="i">
+        <div class="con">
+          <p>{{rb.con}}</p>
+          <div class="con-b">
+            <i> {{rb.time}}</i><i> {{rb.map}}</i><button @click='change'></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- 情有独钟组件开始 -->
+  <template id="qingyou">
+    <div class="right">
+      <h5>情有独钟</h5>
+      <div class="r-b" v-for="(rb,i) in rbList" :key="i">
+        <img :src="rb.img" alt="">
+        <div class="con">
+          <h4>{{rb.title}}</h4>
+          <p>{{rb.con}}</p>
+          <div class="con-b">
+            <i> {{rb.time}}</i><i> {{rb.map}}</i><button @click='change'></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- 勤学苦练组件开始 -->
+  <template id="qinxue">
+    <div class="right">
+      <h5>勤学苦练</h5>
+      <div class="r-b" v-for="(rb,i) in rbList" :key="i">
+        <img :src="rb.img" alt="">
+        <div class="con">
+          <h4>{{rb.title}}</h4>
+          <p>{{rb.con}}</p>
+          <div class="con-b">
+            <i> {{rb.time}}</i><i> {{rb.map}}</i><button @click='change'></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- 旅途风景组件开始 -->
+  <template id="lvtu">
+    <div class="right">
+      <h5>旅途风景</h5>
+      <div class="r-b" v-for="(rb,i) in rbList" :key="i">
+        <img :src="rb.img" alt="">
+        <div class="con">
+          <h4>{{rb.title}}</h4>
+          <p>{{rb.con}}</p>
+          <div class="con-b">
+            <i> {{rb.time}}</i><i> {{rb.map}}</i><button @click='change'></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- 美味佳肴组件开始 -->
+  <template id="meiwei">
+    <div class="right">
+      <h5>美味佳肴</h5>
+      <div class="r-b" v-for="(rb,i) in rbList" :key="i">
+        <img :src="rb.img" alt="">
+        <div class="con">
+          <h4>{{rb.title}}</h4>
+          <p>{{rb.con}}</p>
+          <div class="con-b">
+            <i> {{rb.time}}</i><i> {{rb.map}}</i><button @click='change'></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- 关于我组件开始 -->
+  <template id="guanyu">
+    <div class="right">
+      <h5>关于Blog</h5>
+      <div class="r-b1" v-for="(rb,i) in rbList" :key="i">
+        <div class="con">
+          <h4>{{rb.title}}</h4>
+          <p v-html='rb.con'>{{rb.con}}</p>
+          <div class="con-b">
+            <i style="text-align: right"> {{rb.time}}</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</body>
+
+<script>
+  // 路由组件开始
+  // 首页组件
+  var home = {
+    template: "#main",
+    data() {
+      return {
+        imgList: [{ img: 'img/lixian1.jpg' },
+        { img: 'img/lixian2.jpg' },
+        { img: 'img/lixian3.jpg' },
+        { img: 'img/lixian4.jpg' }
+        ],
+        rbList: [
+          { img: 'img/touxiang.jpg', title: '第一天搭建', con: '这是内容', time: '2019-08-01', map: '江西抚州' },
+          { img: 'img/touxiang.jpg', title: '第2天搭建', con: '这是内容', time: '2019-08-01', map: '江西抚州' }
+        ]
+      }
+    },
+    methods: {
+      change() {
+        alert('谢谢你的点赞')
+      }
+    },
+  }
+  //  左侧栏通用组件
+  var tongyong = {
+    template: "#tongyong"
+  }
+  // 畅所欲言组件
+  var changyan = {
+    template: "#changyan",
+    data() {
+      return {
+        rbList: [
+          { con: '这是内容', time: '2019-08-01', map: '江西抚州' }
+        ]
+      }
+    },
+    methods: {
+      change() {
+        alert('谢谢你的点赞')
+      }
+    },
+  }
+  // 情有独钟组件
+  var qingyou = {
+    template: "#qingyou",
+    data() {
+      return {
+        rbList: [
+          { img: 'img/坚持.png', title: '学习', con: '加油', time: '2019-08-01', map: '江西抚州' }
+        ]
+      }
+    },
+    methods: {
+      change() {
+        alert('谢谢你的点赞')
+      }
+    },
+  }
+  // 勤学苦练组件
+  var qinxue = {
+    template: "#qinxue",
+    data() {
+      return {
+        rbList: [
+          { img: 'img/坚持.png', title: '学习', con: '加油', time: '2019-08-02', map: '江西抚州' },
+        ]
+      }
+    },
+    methods: {
+      change() {
+        alert('谢谢你的点赞')
+      }
+    },
+  }
+  // 旅途风景组件
+  var lvtu = {
+    template: "#lvtu",
+    data() {
+      return {
+        rbList: [
+          { img: 'img/touxiang.jpg', title: '第一天搭建', con: '这是内容', time: '2019-08-01', map: '江西抚州' },
+          { img: 'img/touxiang.jpg', title: '第2天搭建', con: '这是内容', time: '2019-08-01', map: '江西抚州' }
+        ]
+      }
+    },
+    methods: {
+      change() {
+        alert('谢谢你的点赞')
+      }
+    },
+  }
+  // 美味佳肴组件
+  var meiwei = {
+    template: "#meiwei",
+    data() {
+      return {
+        rbList: [
+          { img: 'img/touxiang.jpg', title: '第一天搭建', con: '这是内容', time: '2019-08-01', map: '江西抚州' },
+          { img: 'img/touxiang.jpg', title: '第2天搭建', con: '这是内容', time: '2019-08-01', map: '江西抚州' }
+        ]
+      }
+    },
+    methods: {
+      change() {
+        alert('谢谢你的点赞')
+      }
+    },
+  }
+  // 关于我组件
+  var guanyu = {
+    template: "#guanyu",
+    data() {
+      return {
+        rbList: [
+          { title: '1.0版本', con: '使用说明', time: '2019-08-01' }
+        ]
+      }
+    },
+    methods: {
+      change() {
+        alert('谢谢你的点赞')
+      }
+    },
+  }
+
+  // 路由
+  var router = new VueRouter({
+    routes: [
+      { path: '/', component: home },
+      {
+        path: '/tongyong',
+        component: tongyong,
+        children: [
+          { path: '/changyan', component: changyan },
+          { path: '/qingyou', component: qingyou },
+          { path: '/qinxue', component: qinxue },
+          { path: '/lvtu', component: lvtu },
+          { path: '/meiwei', component: meiwei },
+          { path: '/guanyu', component: guanyu }
+        ]
+      }
+
+    ]
+  })
+
+  // vue实例
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      navList: [{ tit: "首页", luyou: "/" },
+      { tit: "畅所欲言", luyou: "/changyan" },
+      { tit: "情有独钟", luyou: "/qingyou" },
+      { tit: "勤学苦练", luyou: "/qinxue" },
+      { tit: "旅途风景", luyou: "/lvtu" },
+      { tit: "美味佳肴", luyou: "/meiwei" },
+      { tit: "关于Blog", luyou: "/guanyu" }
+      ],
+
+    },
+    router
+  })
+</script>
+
+
+</html>
